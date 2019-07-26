@@ -1,28 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Home
+    <ion-title color="secondary">
+      Inicio
     </ion-title>
+    <ion-button (click)="OnLogout()" fill="clear" slot="end" color="secondary" size="large" shape="round">
+        <ion-icon md="md-log-out"></ion-icon>
+    </ion-button>
   </ion-toolbar>
+  <hr color="white">  
 </ion-header>
 
-<ion-content>
-    <ion-item>
-        <ion-button>
-            <ion-icon name="logo-usd"></ion-icon>
-           <ion-label>Total: </ion-label>
-        </ion-button>
-      </ion-item>
-   <ion-item>
-     <ion-button>
-        <ion-icon ios="ios-trending-up" md="md-trending-up"></ion-icon>
-        <ion-label>Ingresos: </ion-label>
-     </ion-button>
-   </ion-item>
-   <ion-item>
-      <ion-button>
-          <ion-icon ios="ios-trending-down" md="md-trending-down"></ion-icon>
-         <ion-label>Egresos: </ion-label>
-      </ion-button>
-    </ion-item>>
+<ion-content fullscreen>
+  <ion-item>
+    <ion-button fill="clear">
+        <ion-label color="light"> Total disponible </ion-label>
+    </ion-button>
+  </ion-item>
+  <hr>
+  <ion-item>
+    <ion-button fill="clear">
+        <ion-label color="light"> Ingresos: </ion-label>
+    </ion-button>
+  </ion-item>
+  <hr>
+  <ion-item>
+    <ion-button fill="clear">
+      <ion-label color="light"> Egresos: </ion-label>
+    </ion-button>
+  </ion-item>
+  <hr>
 </ion-content>

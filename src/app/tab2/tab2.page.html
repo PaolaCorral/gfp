@@ -1,38 +1,39 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Ingreso</ion-title>
+    <ion-title color="secondary">Ingreso</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
   <ion-item>
-    <ion-label position="floating" required>Producto</ion-label>
-    <ion-input></ion-input>
+    <ion-label position="floating" required color="light"> Producto</ion-label>
+    <ion-input color="light"></ion-input>
   </ion-item>
   <ion-item>
-      <ion-label position="floating">Fecha</ion-label>
-      <ion-datetime displayFormat="MM DD YYYY" placeholder="Selecciona la fecha..."></ion-datetime>
+      <ion-label position="floating" color="light">Fecha</ion-label>
+      <ion-datetime class="datetimeColor" displayFormat="MM DD YYYY" placeholder="Selecciona la fecha..." class="placeholderColor"></ion-datetime>
     </ion-item>
   <ion-item>
-    <ion-label position="floating">Precio</ion-label>
+    <ion-label position="floating" color="light">Precio</ion-label>
     <ion-input type="number" required></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Descripcion</ion-label>
+    <ion-label position="floating" color="light">Descripcion</ion-label>
     <ion-input></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Categoria?</ion-label>
-    <ion-select placeholder="Selecciona categoria?">
-      <ion-select-option>Comida</ion-select-option>
+    <ion-label position="floating" color="light">Categoria</ion-label>
+    <ion-select placeholder="Selecciona categoria" class="placeholderColor">
+      <ion-select-option >Comida</ion-select-option>
       <ion-select-option>Luz</ion-select-option>
       <ion-select-option>Electricidad</ion-select-option>
       <ion-select-option>Cable</ion-select-option>
       <ion-select-option>Telefono</ion-select-option>
     </ion-select>
-  </ion-item>
-  <ion-button id="btnGuardar">GUARDAR <ion-icon name='checkmark'></ion-icon></ion-button>
+  </ion-item >
+  <br>
+  <ion-button color="secondary" shape="round">GUARDAR <ion-icon name='checkmark'></ion-icon></ion-button>
 </ion-content>

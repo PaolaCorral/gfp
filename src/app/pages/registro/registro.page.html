@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-title  text-center color="secondary">Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+    <br>
+    <p style="color:#a8e6d5;" text-center>Ingresa tus datos para registrarte</p>
+    <br>
+  <ion-item>
+    <ion-label position="floating" color="light">Nombre</ion-label>
+    <ion-input  type="text" name="name" [(ngModel)]="name" required color="light"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" color="light">Correo Electronico</ion-label>
+    <ion-input  type="text" name="email" [(ngModel)]="email" color="light"
+        pattern="^([a-zA-Z0-9_\-\.)@[a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" color="light">Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="password" name="password" required color="light"></ion-input>
+  </ion-item>
+    <br>
+    <ion-button (click)="onSubmitRegister()" expand="block" color="secondary" shape="round">Registrarse</ion-button>
+    <br>
+    <p text-center [routerLink]="['/login']" routerLinkActive="router-link-active" style="color:#a8e6d5;" >Ya tengo cuenta</p>
+</ion-content>
