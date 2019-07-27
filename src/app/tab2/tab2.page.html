@@ -8,10 +8,16 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <ion-item>
-    <ion-label position="floating" required color="light"> Producto</ion-label>
-    <ion-input color="light"></ion-input>
-  </ion-item>
+    <ion-item>
+        <ion-label position="floating" color="light">Procedencia</ion-label>
+        <ion-select placeholder="Selecciona categoria" class="placeholderColor">
+          <ion-select-option >Comida</ion-select-option>
+          <ion-select-option>Luz</ion-select-option>
+          <ion-select-option>Electricidad</ion-select-option>
+          <ion-select-option>Cable</ion-select-option>
+          <ion-select-option>Telefono</ion-select-option>
+        </ion-select>
+      </ion-item >
   <ion-item>
       <ion-label position="floating" color="light">Fecha</ion-label>
       <ion-datetime class="datetimeColor" displayFormat="MM DD YYYY" placeholder="Selecciona la fecha..." class="placeholderColor"></ion-datetime>
@@ -24,16 +30,7 @@
     <ion-label position="floating" color="light">Descripcion</ion-label>
     <ion-input></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label position="floating" color="light">Categoria</ion-label>
-    <ion-select placeholder="Selecciona categoria" class="placeholderColor">
-      <ion-select-option >Comida</ion-select-option>
-      <ion-select-option>Luz</ion-select-option>
-      <ion-select-option>Electricidad</ion-select-option>
-      <ion-select-option>Cable</ion-select-option>
-      <ion-select-option>Telefono</ion-select-option>
-    </ion-select>
-  </ion-item >
+ 
   <br>
   <ion-button color="secondary" shape="round">GUARDAR <ion-icon name='checkmark'></ion-icon></ion-button>
 </ion-content>
