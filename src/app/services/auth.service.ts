@@ -37,4 +37,8 @@ export class AuthService {
       }).catch(err => reject(err));
     });
   }
+
+  ingreso(procedencia: '', fecha: '', Precio: number, Descripcion: string ) {
+   
+  }
 }

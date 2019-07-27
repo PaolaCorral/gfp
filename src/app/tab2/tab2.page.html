@@ -10,7 +10,7 @@
 <ion-content fullscreen>
     <ion-item>
         <ion-label position="floating" color="light">Procedencia</ion-label>
-        <ion-select placeholder="Selecciona categoria" class="placeholderColor">
+        <ion-select [(ngModel)]="procedencia" placeholder="Selecciona categoria" class="placeholderColor" type="" >
           <ion-select-option >Comida</ion-select-option>
           <ion-select-option>Luz</ion-select-option>
           <ion-select-option>Electricidad</ion-select-option>
@@ -20,17 +20,17 @@
       </ion-item >
   <ion-item>
       <ion-label position="floating" color="light">Fecha</ion-label>
-      <ion-datetime class="datetimeColor" displayFormat="MM DD YYYY" placeholder="Selecciona la fecha..." class="placeholderColor"></ion-datetime>
+      <ion-datetime [(ngModel)]="fecha" class="datetimeColor" displayFormat="MM DD YYYY" placeholder="Selecciona la fecha..." class="placeholderColor"></ion-datetime>
     </ion-item>
   <ion-item>
     <ion-label position="floating" color="light">Precio</ion-label>
-    <ion-input type="number" required></ion-input>
+    <ion-input type="number" [(ngModel)]="Precio" required></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating" color="light">Descripcion</ion-label>
-    <ion-input></ion-input>
+    <ion-input type="text"  [(ngModel)]="Descripcion" ></ion-input>
   </ion-item>
  
   <br>
-  <ion-button color="secondary" shape="round">GUARDAR <ion-icon name='checkmark'></ion-icon></ion-button>
+  <ion-button (click)="onGuardar()" color="secondary" shape="round">GUARDAR <ion-icon name='checkmark'></ion-icon></ion-button>
 </ion-content>
