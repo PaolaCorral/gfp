@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content fullscreen>
+<<<<<<< HEAD
   <ion-item>
     <ion-label position="floating" required color="light"> Procedencia</ion-label>
     <ion-input color="light"></ion-input>
@@ -19,11 +20,34 @@
   <ion-item>
     <ion-label position="floating" color="light">Cantidad</ion-label>
     <ion-input type="number" required></ion-input>
+=======
+    <ion-item>
+        <ion-label position="floating" color="light">Procedencia</ion-label>
+        <ion-select [(ngModel)]="procedencia" placeholder="Selecciona categoria" class="placeholderColor" type="" >
+          <ion-select-option >Comida</ion-select-option>
+          <ion-select-option>Luz</ion-select-option>
+          <ion-select-option>Electricidad</ion-select-option>
+          <ion-select-option>Cable</ion-select-option>
+          <ion-select-option>Telefono</ion-select-option>
+        </ion-select>
+      </ion-item >
+  <ion-item>
+      <ion-label position="floating" color="light">Fecha</ion-label>
+      <ion-datetime [(ngModel)]="fecha" class="datetimeColor" displayFormat="MM DD YYYY" placeholder="Selecciona la fecha..." class="placeholderColor"></ion-datetime>
+    </ion-item>
+  <ion-item>
+    <ion-label position="floating" color="light">Precio</ion-label>
+    <ion-input type="number" [(ngModel)]="Precio" required></ion-input>
+>>>>>>> 44aeb7d2fcfe8b33c1fb302c263e5ced1ad84657
   </ion-item>
   <ion-item>
     <ion-label position="floating" color="light">Descripcion</ion-label>
-    <ion-input></ion-input>
+    <ion-input type="text"  [(ngModel)]="Descripcion" ></ion-input>
   </ion-item>
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 44aeb7d2fcfe8b33c1fb302c263e5ced1ad84657
   <br>
-  <ion-button color="secondary" shape="round">GUARDAR <ion-icon name='checkmark'></ion-icon></ion-button>
+  <ion-button (click)="onGuardar()" color="secondary" shape="round">GUARDAR <ion-icon name='checkmark'></ion-icon></ion-button>
 </ion-content>
