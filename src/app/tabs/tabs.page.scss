@@ -1,7 +1,4 @@
-
-ion-tabs{
-
-    --ion-tabbar-background-color:blue;
-    --ion-tabs-background-color:var(--ion-tabbar-background-color, #ffffff);
-    --ion-tabbar-text-color-active: green;
+ion-tab-bar{
+    --color-selected:#2abe97 !important;
+    --background:#05141b !important;
 }

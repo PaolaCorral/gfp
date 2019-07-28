@@ -10,3 +10,24 @@ ion-app{
 ion-router-outle{
     background: none;
 }
+.tabbar {
+    background: red !important;
+    color: #bbb !important;
+    & .tab-button {
+        color: #bbb !important;
+        & .tab-button-icon {
+            color: #bbb !important;
+
+        }
+
+    }
+    & .tab-button[aria-selected=true]{
+        // text-shadow: 1px 0px #eaeaea;
+        color: white !important;
+        & .tab-button-icon {
+            text-shadow: 1px 0px #eaeaea;
+            color: white !important;
+
+        }
+    }
+}
