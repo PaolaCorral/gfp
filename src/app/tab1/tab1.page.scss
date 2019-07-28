@@ -2,6 +2,7 @@
   max-height: 35vh;
   overflow: hidden;
 }
+
 ion-content {
   --background: linear-gradient(#000000, #607d8b);
 }
@@ -17,3 +18,11 @@ ion-item{
 ion-tab-button{
 
 }
+
+hr {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  background-color: #7ae9cc;
+  }
