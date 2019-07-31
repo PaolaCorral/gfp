@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title color="secondary">Ingresos</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content fullscreen>
+    <ion-list lines="full">     
+        <ion-item *ngIf="ingreso">
+          <ion-input required type="test" placeholder="procedencia" 
+            [(ngModel)]="ingreso.procedencia">
+          </ion-input>
+        </ion-item>
+        <ion-item *ngIf="ingreso">
+          <ion-input required type="number" placeholder="ingreso" 
+            [(ngModel)]="ingreso.ingreso">
+          </ion-input>
+        </ion-item>
+    </ion-list>
+    <ion-button expand="full" (click)="saveIngreso()">Guardar</ion-button>
+    <ion-fab vertical="bottom" horizontal="end" sllot="fixed" color="danger">
+      <ion-fab-button color="danger" [routerLink]="['/tab2']" routerDirection="forward" (click)="onRemove(ingresoId)" >
+        <ion-icon name="trash"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-content>
+  

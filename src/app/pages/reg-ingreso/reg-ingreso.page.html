@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title color="secondary">Ingreso</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-item>
+    <ion-label position="floating" required color="light"> Procedencia</ion-label>
+    <ion-input color="light"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" color="light">Fecha</ion-label>
+    <ion-datetime displayFormat="MM DD YYYY" placeholder="Selecciona la fecha..."></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" color="light">Cantidad</ion-label>
+    <ion-input type="number" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" color="light">Descripcion</ion-label>
+    <ion-input type="text"  [(ngModel)]="Descripcion" ></ion-input>
+  </ion-item>
+  <br>
+  <ion-button (click)="onGuardar()" color="secondary" shape="round">GUARDAR <ion-icon name='checkmark'></ion-icon></ion-button>
+</ion-content>

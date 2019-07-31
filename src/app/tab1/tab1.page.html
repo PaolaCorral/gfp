@@ -11,6 +11,20 @@
 </ion-header>
 
 <ion-content fullscreen>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="secondary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side ="top"> 
+      <ion-fab-button color="dark" (click)="onclickEgreso()">
+          <ion-icon ios="ios-trending-down" md="md-trending-down" ></ion-icon>
+        </ion-fab-button>
+      <ion-fab-button color="light"(click)="onclickIngreso()">
+        <ion-icon  ios="ios-trending-up" md="md-trending-up"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+  
   <ion-item>
     <ion-button fill="clear">
         <ion-label color="light"> Total disponible </ion-label>

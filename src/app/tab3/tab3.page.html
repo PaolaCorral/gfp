@@ -1,5 +1,4 @@
 <ion-header>
-<<<<<<< HEAD
     <ion-toolbar>
       <ion-title color="secondary">Egreso</ion-title>
       <ion-buttons slot="start">
@@ -7,57 +6,21 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  
-  <ion-content fullscreen>
-    <ion-item>
-      <ion-label position="floating" required color="light"> Producto</ion-label>
-      <ion-input color="light"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating" color="light">Fecha</ion-label>
-      <ion-datetime class="datetimeColor" displayFormat="MM DD YYYY" placeholder="Selecciona la fecha..." class="placeholderColor"></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating" color="light">Precio</ion-label>
-      <ion-input type="number" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating" color="light">Descripcion</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating" color="light">Categoria</ion-label>
-      <ion-select placeholder="Selecciona categoria" class="placeholderColor">
-        <ion-select-option >Comida</ion-select-option>
-        <ion-select-option>Luz</ion-select-option>
-        <ion-select-option>Electricidad</ion-select-option>
-        <ion-select-option>Cable</ion-select-option>
-        <ion-select-option>Telefono</ion-select-option>
-        <ion-select-option>Otro</ion-select-option>
-      </ion-select>
-    </ion-item >
-    <br>
-    <ion-button color="secondary" shape="round">GUARDAR <ion-icon name='checkmark'></ion-icon></ion-button>
-  </ion-content>
-  
-=======
-  <ion-toolbar>
-    <ion-title>Gastos</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content fullscreen>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" (click)="onclickEgreso()">
+    <ion-fab-button color="secondary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <ion-item>
     <ion-label position="floating" color="light" required>Producto</ion-label>
     <ion-input></ion-input>
   </ion-item>
   <ion-item>
-      <ion-label position="floating" color="light" >Fecha</ion-label>
-      <ion-datetime displayFormat="MM DD YYYY" placeholder="Selecciona la fecha..."></ion-datetime>
-    </ion-item>
+    <ion-label position="floating" color="light" >Fecha</ion-label>
+    <ion-datetime displayFormat="MM DD YYYY" placeholder="Selecciona la fecha..."></ion-datetime>
+  </ion-item>
   <ion-item>
     <ion-label position="floating" color="light" >Precio</ion-label>
     <ion-input type="number" required></ion-input>
@@ -67,8 +30,8 @@
     <ion-input></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating" color="light" >Categoria?</ion-label>
-    <ion-select placeholder="Selecciona categoria?">
+    <ion-label position="floating" color="light" >Categoria</ion-label>
+    <ion-select placeholder="Selecciona categoria?" class="placeholderColor">
       <ion-select-option>Comida</ion-select-option>
       <ion-select-option>Luz</ion-select-option>
       <ion-select-option>Electricidad</ion-select-option>
@@ -76,6 +39,5 @@
       <ion-select-option>Telefono</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-button id="btnGuardar">GUARDAR <ion-icon name='checkmark'></ion-icon></ion-button>
+  <ion-button (click)="onGuardar()" color="secondary" shape="round">GUARDAR <ion-icon name='checkmark'></ion-icon></ion-button>
 </ion-content>
->>>>>>> 44aeb7d2fcfe8b33c1fb302c263e5ced1ad84657

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -8,9 +9,15 @@ import { AuthService } from '../services/auth.service';
 })
 export class Tab1Page {
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   OnLogout(){
-    this.authService.logout()
+    this.authService.logout();
+  }
+  onclickEgreso(){
+    this.router.navigate(['/reg-egreso']);
+  }
+  onclickIngreso(){
+    this.router.navigate(['/reg-ingreso']);
   }
 }

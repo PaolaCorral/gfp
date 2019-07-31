@@ -6,7 +6,11 @@ import { NologinGuard } from './guards/nologin.guard';
 const routes: Routes = [
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule', canActivate : [AuthGuard] },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule', canActivate : [NologinGuard] },
-  { path: 'registro', loadChildren: './pages/registro/registro.module#RegistroPageModule', canActivate : [NologinGuard] }
+  { path: 'registro', loadChildren: './pages/registro/registro.module#RegistroPageModule', canActivate : [NologinGuard] },
+  { path: 'reg-ingreso', loadChildren: './pages/reg-ingreso/reg-ingreso.module#RegIngresoPageModule' },
+  { path: 'reg-egreso', loadChildren: './pages/reg-egreso/reg-egreso.module#RegEgresoPageModule' },
+  { path: 'Idetails/:id', loadChildren: './pages/ingreso-details/ingreso-details.module#IngresoDetailsPageModule' },
+  { path: 'Idetails', loadChildren: './pages/ingreso-details/ingreso-details.module#IngresoDetailsPageModule'}
 ];
 @NgModule({
   imports: [

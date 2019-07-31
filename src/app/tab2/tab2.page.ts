@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { IngresosService } from '../services/ingresos.service';
+import { Ingreso } from '../interfaces/interfaces';
 
 @Component({
   selector: 'app-tab2',
@@ -9,19 +11,18 @@ import { Router } from '@angular/router';
 })
 export class Tab2Page implements OnInit {
 
-  public procedencia: '';
-  public fecha: '';
-  public Precio: number;
-  public Descripcion: string;
+  ingresos: Ingreso[];
 
-  ngOnInit(): void {}
+  constructor(private authService: AuthService, public router: Router, private ingresosService: IngresosService) {}
 
-  constructor(private authService: AuthService, public router: Router) {}
+  ngOnInit() {
+    this.ingresosService.getIngresos().subscribe(res => {
+      this.ingresos = res;
+      console.log(res);
+    })
+  }
 
-  onGuardar() {
-    this.authService.ingreso(this.procedencia, this.fecha, this.Precio, this.Descripcion).then( res => {
-      this.router.navigate(['']);
-      console.log(AuthService);
-    }).catch(err => console.log(err));
+  onclickIngreso(){
+    this.router.navigate(['/reg-ingreso']);
   }
 }
