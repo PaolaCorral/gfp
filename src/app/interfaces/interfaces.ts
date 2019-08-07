@@ -1,8 +1,14 @@
-export interface Ingreso {
+export interface Income {
+    uid?: string;
     id?: string;
-    // uid: string;
-    procedencia: string;
-    fecha: string;
-    ingreso: number;
-    descripcion: string;
+    source: string;
+    date: string;
+    income: number;
+    description: string;
   }
+export interface User {
+  uid?: string;
+  name: string;
+  country: string;
+  incomes: number;
+}

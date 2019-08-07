@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
-import { Ingreso } from 'src/app/interfaces/interfaces';
-import { IngresosService } from '../../services/ingresos.service';
+import { Income } from 'src/app/interfaces/interfaces';
+import { CrudService } from '../../services/crud.service';
 
 @Component({
   selector: 'app-ingreso-details',
@@ -10,20 +10,20 @@ import { IngresosService } from '../../services/ingresos.service';
   styleUrls: ['./ingreso-details.page.scss'],
 })
 export class IngresoDetailsPage implements OnInit {
-  ingreso: Ingreso = {
-    procedencia: '',
-    fecha: '',
-    ingreso: 1,
-    descripcion: ''
+  income: Income = {
+    source: '',
+    date: '',
+    income: 0,
+    description: ''
   };
-  ingresoId = null;
+  incomeId = null;
 
   constructor( private route: ActivatedRoute, private nav: NavController,
-               private ingresoService: IngresosService, private loagingController: LoadingController) { }
+               private crudService: CrudService, private loagingController: LoadingController) { }
 
   ngOnInit() {
-    this.ingresoId = this.route.snapshot.params.id;
-    if (this.ingresoId) {
+    this.incomeId = this.route.snapshot.params.id;
+    if (this.incomeId) {
       this.loadIngreso();
     }
   }
@@ -33,32 +33,35 @@ export class IngresoDetailsPage implements OnInit {
       message: 'Loading...'
     });
     await loading.present();
-    this.ingresoService.getIngreso(this.ingresoId).subscribe(res => {
+    this.crudService.getIncome(this.incomeId).subscribe(res => {
       loading.dismiss();
-      this.ingreso = res;
+      this.income = res;
     })
   }
 
-  async saveIngreso() {
+  async saveIncome() {
+    console.log(this.income, '+', this.incomeId)
     const loading = await this.loagingController.create({
       message: 'Guardando...'
+      
     });
     await loading.present();
-    if(this.ingresoId) {
-      this.ingresoService.updateIngreso(this.ingreso, this.ingresoId).then(() => {
+    if(this.incomeId) {
+      this.crudService.updateIncome(this.income, this.incomeId).then(() => {
         loading.dismiss();
         this.nav.navigateForward('/tabs/tab2');
       });
     } else {
-      this.ingresoService.addIngreso(this.ingreso).then(() => {
+      console.log('hey');
+      this.crudService.addIncome(this.income).then(() => {
         loading.dismiss();
         this.nav.navigateForward('/tabs/tab2');
       });
     }
   }
-  onRemove(idIngreso: string) {
-    if(this.ingresoId) {
-      this.ingresoService.removeIngreso(idIngreso);
+  onRemove(idIncome: string) {
+    if(this.incomeId) {
+      this.crudService.removeIncome(idIncome, this.income);
     } else {
       this.nav.navigateForward('/tabs/tab2');
     }

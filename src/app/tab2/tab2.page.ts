@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { IngresosService } from '../services/ingresos.service';
-import { Ingreso } from '../interfaces/interfaces';
+import { Income } from '../interfaces/interfaces';
+import { CrudService } from '../services/crud.service';
 
 @Component({
   selector: 'app-tab2',
@@ -11,19 +11,25 @@ import { Ingreso } from '../interfaces/interfaces';
 })
 export class Tab2Page implements OnInit {
 
-  ingresos: Ingreso[];
+  income: Income = {
+    source: '',
+    date: '',
+    income: 0,
+    description: ''
+  };
+  incomes: Income[];
 
-  constructor(private authService: AuthService, public router: Router, private ingresosService: IngresosService) {}
+  constructor(private authService: AuthService, public router: Router, private crudService: CrudService) {}
 
   ngOnInit() {
-    this.ingresosService.getIngresos().subscribe(res => {
-      this.ingresos = res;
+    this.crudService.getIncomes().subscribe(res => {
+      this.incomes = res;
       console.log(res);
     });
   }
 
   onRemove(idIngreso: string) {
-    this.ingresosService.removeIngreso(idIngreso);
+    this.crudService.removeIncome(idIngreso, this.income);
     this.router.navigate(['//tabs/tab2']);
   }
 

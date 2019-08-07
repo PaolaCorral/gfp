@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Ingreso } from '../interfaces/interfaces';
+import { Income } from '../interfaces/interfaces';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IngresosService {
-  private ingresosCollection: AngularFirestoreCollection<Ingreso>;
-  private Ingresos: Observable<Ingreso[]>;
+  private incomesCollection: AngularFirestoreCollection<Income>;
+  private Incomes: Observable<Income[]>;
 
   constructor( private db: AngularFirestore) {
-    this.ingresosCollection = db.collection<Ingreso>('ingresos');
-    this.Ingresos = this.ingresosCollection.snapshotChanges().pipe(map(
+    this.incomesCollection = db.collection<Income>('incomes');
+    this.Incomes = this.incomesCollection.snapshotChanges().pipe(map(
       actions => {
         return actions.map(a => {
 
@@ -26,26 +26,22 @@ export class IngresosService {
    }
 
    getIngresos(){
-    return this.Ingresos;
+    return this.Incomes;
    }
 
    getIngreso(id: string) {
-     return this.ingresosCollection.doc<Ingreso>(id).valueChanges();
+     return this.incomesCollection.doc<Income>(id).valueChanges();
    }
 
-   updateIngreso(ingreso: Ingreso, id: string) {
-    return this.ingresosCollection.doc(id).update(ingreso);
+   updateIngreso(ingreso: Income, id: string) {
+    return this.incomesCollection.doc(id).update(ingreso);
    }
 
-   addIngreso(ingreso: Ingreso) {
-     return this.ingresosCollection.add(ingreso);
+   addIngreso(ingreso: Income) {
+     return this.incomesCollection.add(ingreso);
    }
 
    removeIngreso(id: string) {
-     return this.ingresosCollection.doc(id).delete();
-   }
-
-   totalIngresos() {
-     
+     return this.incomesCollection.doc(id).delete();
    }
 }

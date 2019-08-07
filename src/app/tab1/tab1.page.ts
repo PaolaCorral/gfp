@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { Income } from '../interfaces/interfaces';
+import { CrudService } from '../services/crud.service';
 
 @Component({
   selector: 'app-tab1',
@@ -9,15 +11,20 @@ import { Router } from '@angular/router';
 })
 export class Tab1Page {
 
-  constructor(public authService: AuthService, private router: Router) {}
+  incomes: Income[];
 
-  OnLogout(){
+  constructor(private authService: AuthService, public router: Router, private crudService: CrudService) {}
+  ngOnInit() {
+    this.crudService.getIncomes();
+  }
+
+  OnLogout() {
     this.authService.logout();
   }
-  onclickEgreso(){
+  onclickEgreso() {
     this.router.navigate(['/reg-egreso']);
   }
-  onclickIngreso(){
+  onclickIngreso() {
     this.router.navigate(['/reg-ingreso']);
   }
 }

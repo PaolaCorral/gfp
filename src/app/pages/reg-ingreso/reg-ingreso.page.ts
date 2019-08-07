@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+/* import { ActivatedRoute } from '@angular/router';
 import { IngresosService } from 'src/app/services/ingresos.service';
-import { LoadingController, NavController } from '@ionic/angular';
-import { Ingreso } from 'src/app/interfaces/interfaces';
+import { LoadingController, NavController } from '@ionic/angular'; */
+/* import { Ingreso } from 'src/app/interfaces/interfaces'; */
 
 @Component({
   selector: 'app-reg-ingreso',
@@ -10,21 +10,21 @@ import { Ingreso } from 'src/app/interfaces/interfaces';
   styleUrls: ['./reg-ingreso.page.scss'],
 })
 export class RegIngresoPage implements OnInit {
-  ingreso: Ingreso = {
+  /* ingreso: Ingreso = {
     procedencia: '',
     fecha: '',
     ingreso: 0,
     descripcion: ''
   };
   ingresoId = null;
-
-  constructor(private route: ActivatedRoute, private nav: NavController,
-              private ingresoService: IngresosService, private loagingController: LoadingController) { }
+ */
+  constructor(/* private route: ActivatedRoute, private nav: NavController,
+              private ingresoService: IngresosService, private loagingController: LoadingController */) { }
 
   ngOnInit() {
-    this.ingresoId = this.route.snapshot.params.id;
+    /* this.ingresoId = this.route.snapshot.params.id; */
   }
-  async addIngreso() {
+ /*  async addIngreso() {
     const loading = await this.loagingController.create({
       message: 'Guardando...'
     });
@@ -33,6 +33,6 @@ export class RegIngresoPage implements OnInit {
       loading.dismiss();
       this.nav.navigateForward('/tabs/tab2');
     });
-  }
+  } */
 
 }
