@@ -12,15 +12,17 @@ import { IngresosService } from '../../services/ingresos.service';
 export class IngresoDetailsPage implements OnInit {
   ingreso: Ingreso = {
     procedencia: '',
-    cantidad: 0
+    fecha: '',
+    ingreso: 1,
+    descripcion: ''
   };
   ingresoId = null;
 
   constructor( private route: ActivatedRoute, private nav: NavController,
-    private ingresoService: IngresosService, private loagingController: LoadingController) { }
+               private ingresoService: IngresosService, private loagingController: LoadingController) { }
 
   ngOnInit() {
-    this.ingresoId = this.route.snapshot.params['id'];
+    this.ingresoId = this.route.snapshot.params.id;
     if (this.ingresoId) {
       this.loadIngreso();
     }
@@ -55,6 +57,10 @@ export class IngresoDetailsPage implements OnInit {
     }
   }
   onRemove(idIngreso: string) {
-    this.ingresoService.removeIngreso(idIngreso);
+    if(this.ingresoId) {
+      this.ingresoService.removeIngreso(idIngreso);
+    } else {
+      this.nav.navigateForward('/tabs/tab2');
+    }
   }
 }

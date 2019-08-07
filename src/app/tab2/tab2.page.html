@@ -9,21 +9,20 @@
 
 <ion-content fullscreen>
   <ion-list>
-    <ion-item-sliding *ngFor="let ingreso of ingresos">
-      <ion-item lines= "inset" button [routerLink]="['/Idetails', ingreso.id]">
-        <ion-label>
-          {{ingreso.procedencia}}
-        </ion-label>
+    <ion-item *ngFor="let ingreso of ingresos">    
+        <ion-item lines= "inset" button [routerLink]="['/Idetails', ingreso.id]" lines="full">
+          <ion-label color="light">{{ingreso.procedencia}}</ion-label>
+        </ion-item>
+        <ion-item lines= "inset" button [routerLink]="['/Idetails', ingreso.id]" lines="full">
+          <ion-label color="light">${{ingreso.ingreso}}</ion-label>
+        </ion-item>
+        <ion-item (click)="onRemove(ingreso.id)" slot="end">
+          <ion-icon name="trash" color="danger"></ion-icon>
+        </ion-item> 
       </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option (click)="onRemove(item)" color="secondary">
-        <ion-icon name="checkmark" slot="end"></ion-icon>
-      </ion-item-option>
-    </ion-item-options>
-    </ion-item-sliding>
   </ion-list>
-  <ion-fab vertical="medium" horizontal="end" sllot="fixed">
-    <ion-fab-button [routerLink]="['/Idetails']" routerDirection="forward" >
+  <ion-fab  horizontal="end" vertical="top" slot="fixed" color="secondary">
+    <ion-fab-button [routerLink]="['/Idetails']" routerDirection="forward" color="secondary" >
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

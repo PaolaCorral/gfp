@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar>
-      <ion-title color="secondary">Ingresos</ion-title>
+      <ion-title color="secondary">Ingreso</ion-title>
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
       </ion-buttons>
@@ -8,20 +8,31 @@
   </ion-header>
   
   <ion-content fullscreen>
-    <ion-list lines="full">     
-        <ion-item *ngIf="ingreso">
-          <ion-input required type="test" placeholder="procedencia" 
-            [(ngModel)]="ingreso.procedencia">
-          </ion-input>
+    <ion-list lines="full" *ngIf="ingreso">     
+      <ion-item>
+          <ion-label position="floating" required color="light"> Procedencia</ion-label>
+        <ion-input required type="test" color="light"
+          [(ngModel)]="ingreso.procedencia">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+      <ion-label position="floating" color="light">Cantidad</ion-label>
+
+        <ion-input required type="number" color="light"
+          [(ngModel)]="ingreso.ingreso"></ion-input>
         </ion-item>
-        <ion-item *ngIf="ingreso">
-          <ion-input required type="number" placeholder="ingreso" 
-            [(ngModel)]="ingreso.ingreso">
-          </ion-input>
-        </ion-item>
+      <ion-item>
+        <ion-label position="floating" color="light">Descripcion</ion-label>
+        <ion-input required type="text" color="light"
+          [(ngModel)]="ingreso.descripcion"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating" color="light">Fecha</ion-label>
+        <ion-datetime displayFormat="MM DD YYYY" placeholder="Selecciona la fecha..." [(ngModel)]="ingreso.fecha"></ion-datetime>
+      </ion-item>
     </ion-list>
-    <ion-button expand="full" (click)="saveIngreso()">Guardar</ion-button>
-    <ion-fab vertical="bottom" horizontal="end" sllot="fixed" color="danger">
+    <ion-button (click)="saveIngreso()" color="secondary" shape="round" >Guardar</ion-button>
+    <ion-fab vertical="bottom" horizontal="end" sllot="fixed" color="danger" vertical="medium">
       <ion-fab-button color="danger" [routerLink]="['/tab2']" routerDirection="forward" (click)="onRemove(ingresoId)" >
         <ion-icon name="trash"></ion-icon>
       </ion-fab-button>

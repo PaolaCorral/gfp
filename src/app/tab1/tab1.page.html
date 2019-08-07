@@ -19,7 +19,7 @@
       <ion-fab-button color="dark" (click)="onclickEgreso()">
           <ion-icon ios="ios-trending-down" md="md-trending-down" ></ion-icon>
         </ion-fab-button>
-      <ion-fab-button color="light"(click)="onclickIngreso()">
+      <ion-fab-button color="light" [routerLink]="['/Idetails']" routerDirection="forward">
         <ion-icon  ios="ios-trending-up" md="md-trending-up"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>

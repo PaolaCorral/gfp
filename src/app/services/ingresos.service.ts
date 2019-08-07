@@ -44,4 +44,8 @@ export class IngresosService {
    removeIngreso(id: string) {
      return this.ingresosCollection.doc(id).delete();
    }
+
+   totalIngresos() {
+     
+   }
 }

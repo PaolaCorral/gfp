@@ -19,7 +19,12 @@ export class Tab2Page implements OnInit {
     this.ingresosService.getIngresos().subscribe(res => {
       this.ingresos = res;
       console.log(res);
-    })
+    });
+  }
+
+  onRemove(idIngreso: string) {
+    this.ingresosService.removeIngreso(idIngreso);
+    this.router.navigate(['//tabs/tab2']);
   }
 
   onclickIngreso(){
