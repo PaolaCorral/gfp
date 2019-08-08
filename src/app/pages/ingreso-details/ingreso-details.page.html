@@ -12,14 +12,12 @@
       <ion-item>
           <ion-label position="floating" required color="light"> Procedencia</ion-label>
         <ion-input required type="test" color="light"
-          [(ngModel)]="income.source">
-        </ion-input>
+          [(ngModel)]="income.source" required></ion-input>
       </ion-item>
       <ion-item>
       <ion-label position="floating" color="light">Cantidad</ion-label>
-
         <ion-input required type="number" color="light"
-          [(ngModel)]="income.income"></ion-input>
+          [(ngModel)]="income.income" required></ion-input>
         </ion-item>
       <ion-item>
         <ion-label position="floating" color="light">Descripcion</ion-label>
@@ -33,7 +31,7 @@
     </ion-list>
     <ion-button (click)="saveIncome()" color="secondary" shape="round" >Guardar</ion-button>
     <ion-fab vertical="bottom" horizontal="end" sllot="fixed" color="danger" vertical="medium">
-      <ion-fab-button color="danger" [routerLink]="['/tab2']" routerDirection="forward" (click)="onRemove(idIncome)" >
+      <ion-fab-button color="danger" [routerLink]="['/tab2']" routerDirection="forward" (click)="onRemove()" >
         <ion-icon name="trash"></ion-icon>
       </ion-fab-button>
     </ion-fab>

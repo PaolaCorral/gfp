@@ -22,7 +22,7 @@ export class Tab2Page implements OnInit {
   }
 
   onRemove(idIngreso: string, income: any) {
-    this.crudService.removeIncome(idIngreso, income);
+    this.crudService.removeIncome(idIngreso);
     this.router.navigate(['//tabs/tab2']);
   }
 

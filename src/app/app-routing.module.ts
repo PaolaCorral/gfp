@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'reg-ingreso', loadChildren: './pages/reg-ingreso/reg-ingreso.module#RegIngresoPageModule' },
   { path: 'reg-egreso', loadChildren: './pages/reg-egreso/reg-egreso.module#RegEgresoPageModule' },
   { path: 'Idetails/:id', loadChildren: './pages/ingreso-details/ingreso-details.module#IngresoDetailsPageModule' },
-  { path: 'Idetails', loadChildren: './pages/ingreso-details/ingreso-details.module#IngresoDetailsPageModule'}
+  { path: 'Idetails', loadChildren: './pages/ingreso-details/ingreso-details.module#IngresoDetailsPageModule'},
+  { path: 'expense-details', loadChildren: './pages/expense-details/expense-details.module#ExpenseDetailsPageModule' }
 ];
 @NgModule({
   imports: [

@@ -22,6 +22,7 @@ export class IngresoDetailsPage implements OnInit {
                private crudService: CrudService, private loagingController: LoadingController) { }
 
   ngOnInit() {
+    console.log(this.route.snapshot.params.id);
     this.incomeId = this.route.snapshot.params.id;
     if (this.incomeId) {
       this.loadIncome();
@@ -58,9 +59,10 @@ export class IngresoDetailsPage implements OnInit {
       });
     }
   }
-  onRemove(idIncome: string) {
+  onRemove() {
     if(this.incomeId) {
-      this.crudService.removeIncome(idIncome, this.income);
+      this.crudService.removeIncome(this.incomeId);
+      this.nav.navigateForward('/tabs/tab2');
     } else {
       this.nav.navigateForward('/tabs/tab2');
     }

@@ -24,7 +24,6 @@ export class CrudService {
       if (user) {
         this.userId = user.uid;
         // Obtengo la coleccin de Ingresos con el ID dell usuario concurrente
-        console.log(this.userId);
         this.incomesCollection = db.collection<User>('users').doc(this.userId).collection('income');
         this.Incomes = this.incomesCollection.snapshotChanges().pipe(map(
           actions => {
@@ -59,17 +58,16 @@ export class CrudService {
    }
    updateIncome(income: Income, id: string) {
     /* this.incomes -= income.income; */
-    this.usersCollection.doc(this.userId).update(income);
+    // this.usersCollection.doc(this.userId).update(income);
     return this.usersCollection.doc(this.userId).collection('income').doc(id).update(income);
    }
    addIncome(income: Income) {
     /* this.incomes += income.income; */
-    console.log(this.userId);
     /* this.usersCollection.doc(this.userId).update(this.incomes); */
     return this.usersCollection.doc<User>(this.userId).collection('income').add(income);
    }
 
-   removeIncome(id: string, income: Income) {
+   removeIncome(id: string) {
    // this.incomes -= income.income;
     return this.usersCollection.doc(this.userId).collection('income').doc(id).delete();
    }
