@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content fullscreen>
+  <ion-item>
+      <p style="color:#a8e6d5;">Tu lista de Ingresos:</p>
+    </ion-item>
   <ion-list>
     <ion-item *ngFor="let income of incomes">
         <ion-item lines= "inset" button [routerLink]="['/Idetails', income.id]" lines="full">

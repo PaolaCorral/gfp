@@ -13,9 +13,10 @@ export interface Income {
 }
 export interface Expense {
   id?: string;
-  source: string;
+  product: string;
   date: string;
-  income: number;
+  expense: number;
+  category: string;
   description: string;
 }
 

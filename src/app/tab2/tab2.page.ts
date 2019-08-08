@@ -18,15 +18,12 @@ export class Tab2Page implements OnInit {
   ngOnInit() {
 
     this.crudService.getIncomes().subscribe(res => {
-      this.incomes = res; });
+      this.incomes = res;
+    });
   }
 
   onRemove(idIngreso: string, income: any) {
     this.crudService.removeIncome(idIngreso);
     this.router.navigate(['//tabs/tab2']);
-  }
-
-  onclickIngreso(){
-    this.router.navigate(['/reg-ingreso']);
   }
 }
