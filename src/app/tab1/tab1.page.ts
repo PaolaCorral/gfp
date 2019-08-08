@@ -15,7 +15,7 @@ export class Tab1Page {
 
   constructor(private authService: AuthService, public router: Router, private crudService: CrudService) {}
   ngOnInit() {
-    this.crudService.getIncomes();
+    /* this.crudService.getIncomes(); */
   }
 
   OnLogout() {

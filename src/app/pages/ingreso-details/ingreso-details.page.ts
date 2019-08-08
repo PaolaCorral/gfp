@@ -24,11 +24,11 @@ export class IngresoDetailsPage implements OnInit {
   ngOnInit() {
     this.incomeId = this.route.snapshot.params.id;
     if (this.incomeId) {
-      this.loadIngreso();
+      this.loadIncome();
     }
   }
 
-  async loadIngreso() {
+  async loadIncome() {
     const loading = await this.loagingController.create({
       message: 'Loading...'
     });
@@ -43,7 +43,6 @@ export class IngresoDetailsPage implements OnInit {
     console.log(this.income, '+', this.incomeId)
     const loading = await this.loagingController.create({
       message: 'Guardando...'
-      
     });
     await loading.present();
     if(this.incomeId) {

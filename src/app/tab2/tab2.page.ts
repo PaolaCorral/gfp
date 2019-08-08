@@ -11,25 +11,18 @@ import { CrudService } from '../services/crud.service';
 })
 export class Tab2Page implements OnInit {
 
-  income: Income = {
-    source: '',
-    date: '',
-    income: 0,
-    description: ''
-  };
   incomes: Income[];
 
   constructor(private authService: AuthService, public router: Router, private crudService: CrudService) {}
 
   ngOnInit() {
+
     this.crudService.getIncomes().subscribe(res => {
-      this.incomes = res;
-      console.log(res);
-    });
+      this.incomes = res; });
   }
 
-  onRemove(idIngreso: string) {
-    this.crudService.removeIncome(idIngreso, this.income);
+  onRemove(idIngreso: string, income: any) {
+    this.crudService.removeIncome(idIngreso, income);
     this.router.navigate(['//tabs/tab2']);
   }
 
