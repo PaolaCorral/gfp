@@ -16,7 +16,6 @@ export class Tab2Page implements OnInit {
   constructor(private authService: AuthService, public router: Router, private crudService: CrudService) {}
 
   ngOnInit() {
-
     this.crudService.getIncomes().subscribe(res => {
       this.incomes = res;
     });

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User, Income, Expense } from '../interfaces/interfaces';
 import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { forEach } from '@angular/router/src/utils/collection';
 
 
 @Injectable({
@@ -65,13 +66,14 @@ export class CrudService {
   }
   // Funciones Crud de ingresos
   getIncomes() {
+    console.log(this.Incomes);
     return this.Incomes;
   }
   getIncome(id: string) {
     return this.usersCollection.doc(this.userId).collection('income').doc<Income>(id).valueChanges();
   }
   updateIncome(income: Income, id: string) {
-  /* this.incomes -= income.income; */
+  // this.Incomes -= income.income
   // this.usersCollection.doc(this.userId).update(income);
   return this.usersCollection.doc(this.userId).collection('income').doc(id).update(income);
   }
@@ -84,9 +86,9 @@ export class CrudService {
   // this.incomes -= income.income;
   return this.usersCollection.doc(this.userId).collection('income').doc(id).delete();
   }
-  totalIncome() {
-    /* this.totalIncomes = this.usersCollection.doc(this.userId) */
 
+  getOnlyField(id: string){
+    this.incomesCollection.doc(id).get('income')
   }
 
   // Funciones CRUD de Egresos:
@@ -96,7 +98,7 @@ export class CrudService {
   getExpense(id: string) {
     return this.usersCollection.doc(this.userId).collection('expenses').doc<Expense>(id).valueChanges();
   }
-  updateExpense(expense: Expense, id: string) { 
+  updateExpense(expense: Expense, id: string) {
     return this.usersCollection.doc(this.userId).collection('expenses').doc(id).update(expense);
   }
   addExpense(expense: Expense) {
@@ -105,4 +107,7 @@ export class CrudService {
   removeExpense(id: string) {
     return this.usersCollection.doc(this.userId).collection('expenses').doc(id).delete();
   }
+
+  // Total de todos
+
 }
