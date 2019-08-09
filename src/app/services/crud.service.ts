@@ -21,6 +21,7 @@ export class CrudService {
   public userId: string;
 
   constructor( private db: AngularFirestore, private afAuth: AngularFireAuth) {
+    this.totalIncomes = 0;
 
     // Obtiene el id del usuario concurrente
     this.afAuth.authState.subscribe(user => {
@@ -64,32 +65,48 @@ export class CrudService {
       }
     ));
   }
+
+  getUser() {
+    return this.usersCollection.doc<User>(this.userId).valueChanges();
+  }
   // Funciones Crud de ingresos
   getIncomes() {
-    console.log(this.Incomes);
+    /* console.log(this.Incomes); */
+    console.log(this.usersCollection.doc(this.userId).valueChanges());
     return this.Incomes;
   }
   getIncome(id: string) {
+    console.log(this.usersCollection.doc(this.userId).collection('income').doc<Income>(id).valueChanges());
     return this.usersCollection.doc(this.userId).collection('income').doc<Income>(id).valueChanges();
   }
-  updateIncome(income: Income, id: string) {
-  // this.Incomes -= income.income
-  // this.usersCollection.doc(this.userId).update(income);
-  return this.usersCollection.doc(this.userId).collection('income').doc(id).update(income);
+  updateIncome(income: Income, id: string, oldIncome: number) {
+    // Resta el ingreso viejo y suma en nuevo para actualizar
+    console.log(oldIncome);
+    this.totalIncomes -= oldIncome;
+    this.totalIncomes += income.income;
+    this.usersCollection.doc(this.userId).update({TotalIncomes: this.totalIncomes});
+    // actualiza solo el documento de ingreso
+    return this.usersCollection.doc(this.userId).collection('income').doc(id).update(income);
   }
   addIncome(income: Income) {
-  /* this.incomes += income.income; */
-  /* this.usersCollection.doc(this.userId).update(this.incomes); */
-  return this.usersCollection.doc<User>(this.userId).collection('income').add(income);
+    console.log('income agregado:', income)
+    this.totalIncomes += income.income;
+    console.log('Total:', this.totalIncomes);
+    // Actualiza el valor total de todos los gastos
+    this.usersCollection.doc(this.userId).update({TotalIncomes: this.totalIncomes});
+    return this.usersCollection.doc<User>(this.userId).collection('income').add(income);
   }
-  removeIncome(id: string) {
+  removeIncome(id: string, oldIncome: number) {
   // this.incomes -= income.income;
+  this.totalIncomes -= oldIncome;
+  console.log('Remuevo');
+  this.usersCollection.doc(this.userId).update({TotalIncomes: this.totalIncomes});
   return this.usersCollection.doc(this.userId).collection('income').doc(id).delete();
   }
-
+/* 
   getOnlyField(id: string){
-    this.incomesCollection.doc(id).get('income')
-  }
+    String value = this.usersCollection.doc(this.userId).
+  } */
 
   // Funciones CRUD de Egresos:
   getExpenses() {

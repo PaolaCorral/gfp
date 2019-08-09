@@ -17,6 +17,7 @@ export class IngresoDetailsPage implements OnInit {
     description: ''
   };
   incomeId = null;
+  oldIncome = 0;
 
   constructor( private route: ActivatedRoute, private nav: NavController,
                private crudService: CrudService, private loagingController: LoadingController) { }
@@ -29,6 +30,7 @@ export class IngresoDetailsPage implements OnInit {
     }
   }
 
+
   // Cargo mi ingreso para editarlo
   async loadIncome() {
     const loading = await this.loagingController.create({
@@ -38,6 +40,13 @@ export class IngresoDetailsPage implements OnInit {
     this.crudService.getIncome(this.incomeId).subscribe(res => {
       loading.dismiss();
       this.income = res;
+      console.log('argando ingreso')
+      try {
+        this.oldIncome = this.income.income;
+      } catch {
+        console.log('Poss me muero');
+      }
+      
     });
   }
 
@@ -47,12 +56,14 @@ export class IngresoDetailsPage implements OnInit {
       message: 'Guardando...'
     });
     await loading.present();
+    // En caso de que ya exista uno solo actualiza
     if (this.incomeId) {
-      this.crudService.updateIncome(this.income, this.incomeId).then(() => {
+      this.crudService.updateIncome(this.income, this.incomeId, this.oldIncome).then(() => {
         loading.dismiss();
         this.nav.navigateForward('/tabs/tab2');
       });
     } else {
+      // Aññado el ingreso si no existe el id
       this.crudService.addIncome(this.income).then(() => {
         loading.dismiss();
         this.nav.navigateForward('/tabs/tab2');
@@ -63,7 +74,7 @@ export class IngresoDetailsPage implements OnInit {
   // elimino el ingreso y redirijo
   onRemove() {
     if (this.incomeId) {
-      this.crudService.removeIncome(this.incomeId);
+      this.crudService.removeIncome(this.incomeId, this.oldIncome);
       this.nav.navigateForward('/tabs/tab2');
     } else {
       this.nav.navigateForward('/tabs/tab2');

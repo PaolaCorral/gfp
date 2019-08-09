@@ -19,7 +19,7 @@
         <ion-item lines= "inset" button [routerLink]="['/Idetails', income.id]" lines="full">
           <ion-label color="light">{{income.income}}</ion-label>
         </ion-item>
-        <ion-item (click)="onRemove(income.id, income)" slot="end">
+        <ion-item (click)="onRemove(income.id, income.income)" slot="end">
           <ion-icon name="trash" color="danger"></ion-icon>
         </ion-item> 
       </ion-item>
