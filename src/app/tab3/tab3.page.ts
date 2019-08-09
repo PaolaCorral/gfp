@@ -21,8 +21,8 @@ export class Tab3Page implements OnInit{
     });
   }
 
-  onRemove(idExpense: string, empense: any) {
-    this.crudService.removeExpense(idExpense);
+  onRemove(idExpense: string, oldExpense: number) {
+    this.crudService.removeExpense(idExpense, oldExpense);
     this.router.navigate(['//tabs/tab3']);
   }
 }

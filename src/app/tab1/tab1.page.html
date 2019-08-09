@@ -24,22 +24,31 @@
       </ion-fab-button>
     </ion-fab-list>
   </ion-fab>
+
+  <ion-card>
+    <ion-card-header>
+      Doughnut Chart
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #doughnutCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
   
   <ion-item>
     <ion-button fill="clear">
-        <ion-label color="light"> Total disponible: {{user.TotalIncomes}}</ion-label>
+        <ion-label color="light"> Total disponible: {{(user.TotalIncomes) - (user.TotalExpenses)}} </ion-label>
     </ion-button>
   </ion-item>
   <hr>
   <ion-item>
     <ion-button fill="clear">
-        <ion-label color="light"> Ingresos </ion-label>
+        <ion-label color="light"> Ingresos: {{user.TotalIncomes}} </ion-label>
     </ion-button>
   </ion-item>
   <hr>
   <ion-item>
     <ion-button fill="clear">
-      <ion-label color="light"> Egresos </ion-label>
+      <ion-label color="light"> Egresos: {{user.TotalExpenses}} </ion-label>
     </ion-button>
   </ion-item>
   <hr>

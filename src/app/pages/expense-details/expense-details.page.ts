@@ -18,6 +18,7 @@ export class ExpenseDetailsPage implements OnInit {
     description: ''
   };
   expenseId = null;
+  oldExpense = 0;
 
   constructor(private route: ActivatedRoute, private nav: NavController,
               private crudService: CrudService, private loagingController: LoadingController) { }
@@ -38,6 +39,11 @@ export class ExpenseDetailsPage implements OnInit {
     this.crudService.getExpense(this.expenseId).subscribe(res => {
       loading.dismiss();
       this.expense = res;
+      try {
+        this.oldExpense = this.expense.expense;
+      } catch {
+        console.log('Pos me muero x2')
+      }
     });
   }
 
@@ -48,7 +54,7 @@ export class ExpenseDetailsPage implements OnInit {
     });
     await loading.present();
     if (this.expenseId) {
-      this.crudService.updateExpense(this.expense, this.expenseId).then(() => {
+      this.crudService.updateExpense(this.expense, this.expenseId, this.oldExpense).then(() => {
         loading.dismiss();
         this.nav.navigateForward('/tabs/tab3');
       });
@@ -63,7 +69,7 @@ export class ExpenseDetailsPage implements OnInit {
   // Elimina Egreso
   onRemove() {
     if (this.expenseId) {
-      this.crudService.removeExpense(this.expenseId);
+      this.crudService.removeExpense(this.expenseId, this.oldExpense);
       this.nav.navigateForward('/tabs/tab3');
     } else {
       this.nav.navigateForward('/tabs/tab3');

@@ -46,10 +46,8 @@ export class IngresoDetailsPage implements OnInit {
       } catch {
         console.log('Poss me muero');
       }
-      
     });
   }
-
   // Guardo mi ingreso o lo actualizo en caso de que exita el id
   async saveIncome() {
     const loading = await this.loagingController.create({

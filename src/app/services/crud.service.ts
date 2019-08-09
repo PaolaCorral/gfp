@@ -18,10 +18,12 @@ export class CrudService {
   public totalIncomes: number;
   private expenseCollection: AngularFirestoreCollection<Expense>;
   private Expenses: Observable<Expense[]>;
+  public totalExpenses: number;
   public userId: string;
 
   constructor( private db: AngularFirestore, private afAuth: AngularFireAuth) {
     this.totalIncomes = 0;
+    this.totalExpenses = 0;
 
     // Obtiene el id del usuario concurrente
     this.afAuth.authState.subscribe(user => {
@@ -37,8 +39,7 @@ export class CrudService {
               return {id, ...data};
             });
           }
-        ));
-
+        ));        
         // Obtengo la coleccin de Egresos con el ID dell usuario concurrente
         this.expenseCollection = db.collection<User>('users').doc(this.userId).collection('expenses');
         this.Expenses = this.expenseCollection.snapshotChanges().pipe(map(
@@ -71,7 +72,6 @@ export class CrudService {
   }
   // Funciones Crud de ingresos
   getIncomes() {
-    /* console.log(this.Incomes); */
     console.log(this.usersCollection.doc(this.userId).valueChanges());
     return this.Incomes;
   }
@@ -103,11 +103,6 @@ export class CrudService {
   this.usersCollection.doc(this.userId).update({TotalIncomes: this.totalIncomes});
   return this.usersCollection.doc(this.userId).collection('income').doc(id).delete();
   }
-/* 
-  getOnlyField(id: string){
-    String value = this.usersCollection.doc(this.userId).
-  } */
-
   // Funciones CRUD de Egresos:
   getExpenses() {
     return this.Expenses;
@@ -115,13 +110,20 @@ export class CrudService {
   getExpense(id: string) {
     return this.usersCollection.doc(this.userId).collection('expenses').doc<Expense>(id).valueChanges();
   }
-  updateExpense(expense: Expense, id: string) {
+  updateExpense(expense: Expense, id: string, oldExpense) {
+    this.totalExpenses -= oldExpense;
+    this.totalExpenses += expense.expense;
+    this.usersCollection.doc(this.userId).update({TotalExpenses: this.totalExpenses});
     return this.usersCollection.doc(this.userId).collection('expenses').doc(id).update(expense);
   }
   addExpense(expense: Expense) {
-  return this.usersCollection.doc(this.userId).collection('expenses').add(expense);
+    this.totalExpenses += expense.expense;
+    this.usersCollection.doc(this.userId).update({TotalExpenses: this.totalExpenses});
+    return this.usersCollection.doc(this.userId).collection('expenses').add(expense);
   }
-  removeExpense(id: string) {
+  removeExpense(id: string, oldExpense: number) {
+    this.totalExpenses -= oldExpense;
+    this.usersCollection.doc(this.userId).update({TotalExpenses: this.totalExpenses});
     return this.usersCollection.doc(this.userId).collection('expenses').doc(id).delete();
   }
 

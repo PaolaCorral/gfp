@@ -2,7 +2,8 @@ export interface User {
   uid?: string;
   name: string;
   country: string;
-  Totalincomes: number;
+  TotalIncomes: number;
+  TotalExpenses: number;
 }
 export interface Income {
   id?: string;
